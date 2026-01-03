@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ورود | JS Academi</title>
+   <link href="./assets/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet" />
+   <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />-->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body class="theme-light">
+  <nav class="navbar navbar-expand-lg bg-body shadow-sm stylish-navbar">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <span class="logo-js">JS</span>
+        <span class="logo-academi ms-1">Academi</span>
+        <span class="logo-underline"></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="منو">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="register.html">ثبت‌نام</a></li>
+           <li class="nav-item"><a class="nav-link" href="./AI.html">هوش مصنوعی</a></li>
+ 
+        </ul>
+      </div>
+      <button id="themeToggle" class="btn btn-outline-secondary btn-sm">تاریک/روشن</button>
+    </div>
+  </nav>
+
+  <main class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-5">
+        <div class="card glass shadow-lg card-3d">
+          <div class="card-body p-4">
+            <h1 class="h4 fw-bold mb-3 text-center">ورود به حساب</h1>
+            <form id="loginForm" novalidate>
+              <div class="mb-3">
+                <label class="form-label">ایمیل</label>
+                <input type="email" class="form-control" id="loginEmail" placeholder="example@email.com" required />
+                <div class="invalid-feedback">ایمیل معتبر وارد کنید.</div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">رمز عبور</label>
+                <input type="password" class="form-control" id="loginPassword" placeholder="رمز عبور" required />
+                <div class="invalid-feedback">رمز عبور را وارد کنید.</div>
+              </div>
+              <div class="d-grid mt-3">
+                <button type="submit" class="btn btn-primary">ورود به داشبورد</button>
+              </div>
+              <p class="text-muted small mt-4 text-center">
+                حساب ندارید؟ <a href="register.html">ثبت‌نام</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="./assets/js/script.js"></script>
+  <script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+   <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>--> 
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>داشبورد | JS Academi</title>
+   <link href="./assets/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+  <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />-->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body class="theme-light">
+
+ <nav class="navbar navbar-expand-lg stylish-navbar shadow-sm">
+  <div class="container">
+    <!-- لوگو -->
+    <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
+      <span class="logo-js">JS</span>
+      <span class="logo-academi ms-2">Academi</span>
+      <span class="logo-underline ms-2"></span>
+    </a>
+
+    <!-- دکمه منو -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashNav" aria-label="منو">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- لینک‌ها -->
+    <div class="collapse navbar-collapse" id="dashNav">
+      <ul class="navbar-nav me-auto nav-links">
+        <li class="nav-item"><a class="nav-link" href="#overview">نمای کلی</a></li>
+        <li class="nav-item"><a class="nav-link" href="./AI.html">هوش مصنوعی</a></li>
+        <li class="nav-item"><a class="nav-link" href="#courses">دوره‌ها</a></li>
+        <li class="nav-item"><a class="nav-link" href="#purchased">خریداری شده</a></li>
+        <li class="nav-item"><a class="nav-link" href="#faq">سوالات</a></li>
+      </ul>
+
+      <!-- جستجو -->
+      <form id="dashboardSearch" class="d-none d-md-flex flex-grow-1 mx-3" role="search">
+        <input class="form-control me-2 search-input" type="search" placeholder="🔍 جستجو..." aria-label="Search" />
+      </form>
+    </div>
+
+    <!-- پروفایل -->
+    <button id="sidebarToggle" class="profile-toggle-btn" aria-label="User panel">
+      <img id="profileIcon" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f464.svg" alt="پروفایل" class="rounded-circle" />
+    </button>
+  </div>
+</nav>
+
+
+
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar glass">
+    <div class="sidebar-header d-flex justify-content-between align-items-center">
+      <h3 class="h6 m-0">تنظیمات کاربر</h3>
+      <button id="closeSidebar" class="btn btn-sm btn-outline-secondary">×</button>
+    </div>
+    <div class="sidebar-body">
+      <!-- لیست حساب‌ها با آواتار -->
+      <div class="mb-4">
+        <label class="form-label small">حساب‌های کاربری</label>
+        <ul id="accountList" class="list-group small"></ul>
+        <button id="createAccountBtn" class="btn btn-outline-secondary btn-sm mt-2">ساخت حساب جدید</button>
+      </div>
+
+      <!-- پروفایل فعال -->
+      <div class="mb-4 text-center">
+        <div class="profile-wrapper position-relative d-inline-block">
+          <img id="profilePreview" src="./assets/img/pro.jpg" alt="پروفایل" class="profile-circle" />
+          <label for="profileUpload" class="camera-icon">
+            <i class="bi bi-camera-fill"></i>
+          </label>
+          <input type="file" id="profileUpload" accept="image/*" hidden />
+        </div>
+        <p class="small text-muted mt-2">روی دایره یا آیکن دوربین کلیک کنید.</p>
+      </div>
+
+      <!-- انتخاب رنگ اکسنت -->
+      <div class="mb-3">
+        <label class="form-label small">رنگ اکسنت سایت</label>
+        <div class="d-flex flex-wrap gap-2" id="accentPicker">
+          <button class="accent-swatch" data-color="#0d6efd" style="background:#0d6efd"></button>
+          <button class="accent-swatch" data-color="#6610f2" style="background:#6610f2"></button>
+          <button class="accent-swatch" data-color="#6f42c1" style="background:#6f42c1"></button>
+          <button class="accent-swatch" data-color="#d63384" style="background:#d63384"></button>
+          <button class="accent-swatch" data-color="#fd7e14" style="background:#fd7e14"></button>
+          <button class="accent-swatch" data-color="#198754" style="background:#198754"></button>
+          <button class="accent-swatch" data-color="#20c997" style="background:#20c997"></button>
+        </div>
+      </div>
+
+      <div class="mb-3 d-flex gap-2">
+        <button id="logoutBtn" class="btn btn-outline-danger btn-sm">خروج</button>
+      </div>
+    </div>
+  </aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <!-- پیام شناور پشتیبانی -->
+  <a href="https://t.me/" class="support-float glass" aria-label="پشتیبانی">
+    <img class="support-avatar" src="./assets/img/Copilot_20251228_081621.png" alt="پشتیبان" />
+    <span class="support-text">پشتیبانی آنلاین</span>
+  </a>
+
+  <main class="container my-4">
+    <!-- Rotator -->
+    <section id="heroRotator" class="rotator shadow-sm rounded-4 mb-4 overflow-hidden">
+      <img class="rotator-img" src="./assets/img/Copilot_20251228_082214.png" alt="">
+      <img class="rotator-img" src="./assets/img/java-script-banner-min.jpg" alt="">
+   
+      </section>
+
+    <!-- Overview + Courses -->
+    <section id="overview" class="row g-4">
+      <div class="col-md-4 reveal">
+        <div class="card shadow-sm h-100 glass">
+          <div class="card-body">
+            <h3 class="h6 fw-bold mb-2">وضعیت مسیر یادگیری</h3>
+            <canvas id="pathChart" height="180"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-8 reveal" id="courses">
+        <div class="card shadow-sm h-100 glass">
+          <div class="card-body">
+            <h3 class="h6 fw-bold mb-3">دوره‌ها و پیشنهادها</h3>
+            <div class="row row-cols-1 row-cols-md-2 g-3" id="coursesList"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 reveal" id="purchased">
+        <div class="card shadow-sm h-100 glass">
+          <div class="card-body">
+            <h3 class="h6 fw-bold mb-2">دوره‌های خریداری شده</h3>
+            <ul class="list-group small" id="purchasedList"></ul>
+            <h3 class="h6 fw-bold mt-3">پیشرفت تماشا</h3>
+            <canvas id="progressChart" height="160"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 reveal" id="milestones">
+        <div class="card shadow-sm h-100 glass">
+          <div class="card-body">
+            <h3 class="h6 fw-bold mb-2">نقاط عطف</h3>
+            <ol class="small mb-0">
+              <li>HTML/CSS پیشرفته</li>
+              <li>JavaScript عمیق</li>
+              <li>فریم‌ورک فرانت‌اند</li>
+              <li>Node.js و API</li>
+              <li>پایگاه‌داده و Auth</li>
+              <li>دیپلوی و CI/CD</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 reveal" id="news">
+        <div class="card shadow-sm h-100 glass">
+          <div class="card-body">
+            <h3 class="h6 fw-bold mb-2">خبرها</h3>
+            <ul class="small mb-0">
+              <li>نسخه جدید Node.js منتشر شد</li>
+              <li>تخفیف زمستانه تا 30%</li>
+              <li>وبینار رایگان هفته آینده</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 reveal" id="stats">
+        <div class="card shadow-sm h-100 glass">
+          <div class="card-body">
+            <h3 class="h6 fw-bold mb-2">آمار</h3>
+            <div class="d-flex justify-content-between small"><span>دوره‌های فعال:</span><strong>12</strong></div>
+            <div class="d-flex justify-content-between small"><span>ساعت مطالعه این هفته:</span><strong>12h</strong></div>
+            <div class="d-flex justify-content-between small"><span>مدال‌ها:</span><strong>3</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 reveal" id="tasks">
+        <div class="card shadow-sm h-100 glass">
+          <div class="card-body">
+            <h3 class="h6 fw-bold mb-2">تسک‌ها</h3>
+            <ul class="small mb-0">
+              <li>تمرین Async/Await</li>
+              <li>پیاده‌سازی REST API</li>
+              <li>طراحی کامپوننت‌های UI</li>
+              <li>بهینه‌سازی عملکرد</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 reveal" id="faq">
+        <div class="card shadow-sm h-100 glass">
+          <div class="card-body">
+            <h3 class="h6 fw-bold mb-3">سوالات متداول</h3>
+            <div class="accordion" id="faqAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#q1">پیش‌نیاز دوره چیست؟</button></h2>
+                <div id="q1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body small">آشنایی مقدماتی با HTML/CSS و مفاهیم پایه جاوااسکریپت کافی است.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#q2">آیا پروژه عملی داریم؟</button></h2>
+                <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body small">بله، چند پروژهٔ واقعی در طول دوره پیاده‌سازی می‌شود.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#q3">گواهی پایان دوره؟</button></h2>
+                <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body small">پس از تکمیل مسیر و پروژه‌ها گواهی صادر می‌شود.</div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-3">
+              <h4 class="h6">پشتیبانی</h4>
+              <p class="small mb-1">شماره: 021-12345678</p>
+              <p class="small text-muted">تلگرام، اینستاگرام و توییتر.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 reveal" id="community">
+        <div class="card shadow-sm glass">
+          <div class="card-body">
+            <h3 class="h6 fw-bold mb-2">جامعهٔ دانشجویان</h3>
+            <p class="small mb-0">به گروه‌های بحث و تمرین بپیوندید.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+ <footer class="footer bg-body border-top mt-5 shadow-lg">
+  <div class="container py-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-4">
+    
+    <!-- لوگو -->
+    <div class="d-flex align-items-center fw-bold">
+      <span class="logo-js text-primary fs-4">JS</span>
+      <span class="logo-academi ms-2 text-gradient">Academi</span>
+      <span class="logo-underline ms-2"></span>
+    </div>
+
+    <!-- بخش پشتیبانی و شبکه‌های اجتماعی -->
+    <div class="d-flex flex-column flex-md-row align-items-center gap-3 small">
+      <span class="support text-dark fw-semibold">📞 پشتیبانی: 021-12345678</span>
+      <div class="social-links d-flex gap-2">
+        <a href="https://t.me/" class="btn btn-sm btn-outline-primary rounded-circle">
+          <i class="bi bi-telegram"></i>
+        </a>
+        <a href="https://instagram.com/" class="btn btn-sm btn-outline-danger rounded-circle">
+          <i class="bi bi-instagram"></i>
+        </a>
+        <a href="https://twitter.com/" class="btn btn-sm btn-outline-info rounded-circle">
+          <i class="bi bi-twitter"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- متن توضیحی -->
+    <div class="small text-muted fst-italic">
+      🚀 مسیر سریع فول‌استک با جاوااسکریپت
+    </div>
+
+
+
+  <!-- کپی‌رایت -->
+  <div class="text-center mt-3 small text-secondary">
+    © <span id="year"></span> JS Academi - همه حقوق محفوظ است
+  </div>
+</footer>
+
+
+
+  <script src="./assets/js/script.js"></script>
+ <script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>--> 
+</body>
+</html>
